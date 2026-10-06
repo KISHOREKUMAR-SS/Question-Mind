@@ -1,0 +1,26 @@
+# Python dependencies for mobile app with Chaquopy
+# These will be installed automatically by the Chaquopy gradle plugin
+
+# Excel export
+openpyxl==3.10.10
+
+# HTTP clients for API calls
+requests==2.31.0
+httpx==0.25.1
+
+# Utilities
+python-dateutil==2.8.2
+pytz==2023.3
+
+# PDF parsing
+PyPDF2==3.0.1
+
+# JSON utilities
+json-repair==0.18.0
+
+# Optional: for advanced parsing
+lxml==4.9.3
+beautifulsoup4==4.12.2
+
+# Optional: for database migration (if needed)
+# sqlalchemy==2.0.23
