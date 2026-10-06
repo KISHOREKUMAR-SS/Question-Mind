@@ -1,0 +1,68 @@
+# Dependencies
+node_modules/
+frontend/node_modules/
+shared/node_modules/
+
+# Build outputs
+dist/
+frontend/dist/
+.next/
+
+# Environment variables (never commit secrets)
+.env
+backend-python/.env
+
+# Python
+backend-python/venv/
+backend-python/__pycache__/
+backend-python/app/__pycache__/
+backend-python/app/**/__pycache__/
+**/__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.egg-info/
+
+# Uploads (user data, not source code)
+backend-python/uploads/
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDE
+.vscode/settings.json
+.idea/
+*.suo
+*.user
+
+# Coverage
+coverage/
+
+# TypeScript build info
+*.tsbuildinfo
+
+# Google Secrets / Credentials
+*credentials.json
+JSON SECRETS/
+client_secret*.json
+
+# Graphify Caches
+graphify-out/cache/
+mobile-app/graphify-out/cache/
+
+# Graphify Converted Outputs
+graphify-out/converted/
+mobile-app/graphify-out/converted/
+
+# Databases
+*.db
+data/

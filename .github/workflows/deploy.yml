@@ -1,0 +1,50 @@
+name: Deploy Frontend to Separate Repo
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'frontend/**'
+      - '.github/workflows/deploy.yml'
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Main Repo
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+          cache-dependency-path: 'frontend/package-lock.json'
+
+      - name: Install dependencies
+        run: npm ci
+        working-directory: frontend
+
+      - name: Build React App
+        run: npm run build
+        working-directory: frontend
+        env:
+          VITE_API_URL: ${{ secrets.VITE_API_URL }}
+
+      - name: Deploy to Target Repository
+        run: |
+          cd frontend/dist
+          # Prevent Jekyll processing — ensures all static assets (favicon, etc.) are served
+          touch .nojekyll
+          # SPA routing: copy index.html as 404.html so all routes work on GitHub Pages
+          cp index.html 404.html
+          git init
+          git config user.name "Krish-CS"
+          git config user.email "Krish-CS@users.noreply.github.com"
+          git checkout -b main
+          git add .
+          git commit -m "Deploy: Static site build"
+          git remote add origin "https://${{ secrets.DEPLOY_ACCESS_TOKEN }}@github.com/Krish-CS/QUESTION-MIND-FRONTEND.git"
+          git push --force origin main
