@@ -1,0 +1,245 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Light Mode (Default) - Krish Academia Colors */
+body {
+  @apply bg-gradient-to-br from-pink-50 via-purple-50 to-orange-50 text-slate-900;
+  min-height: 100vh;
+  background-attachment: fixed;
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+/* Dark Mode */
+:is(.dark) body {
+  @apply bg-slate-950 text-slate-50;
+  background-image: none;
+}
+
+/* Buttons */
+.btn {
+  @apply inline-flex items-center justify-center gap-2 rounded-xl px-4 py-2.5 text-sm font-semibold transition-all duration-300 disabled:opacity-60 disabled:cursor-not-allowed focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-pink-500 transform hover:scale-105 active:scale-95;
+}
+
+.btn-primary {
+  @apply bg-gradient-to-r from-pink-600 via-pink-500 to-purple-600 text-white shadow-lg hover:shadow-xl hover:from-pink-700 hover:via-pink-600 hover:to-purple-700 active:from-pink-800 active:to-purple-800 focus:ring-pink-500;
+}
+
+.btn-secondary {
+  @apply bg-gradient-to-r from-purple-100 to-pink-100 text-purple-900 hover:from-purple-200 hover:to-pink-200 active:from-purple-300 active:to-pink-300 shadow-md hover:shadow-lg;
+}
+
+:is(.dark) .btn-secondary {
+  @apply bg-gradient-to-r from-purple-800 to-pink-800 text-purple-100 hover:from-purple-700 hover:to-pink-700 active:from-purple-600 active:to-pink-600 shadow-lg hover:shadow-xl;
+}
+
+.btn-danger {
+  @apply bg-gradient-to-r from-red-600 to-orange-600 text-white hover:from-red-700 hover:to-orange-700 active:from-red-800 active:to-orange-800 shadow-lg hover:shadow-xl;
+}
+
+.btn-success {
+  @apply bg-gradient-to-r from-pink-600 to-purple-600 text-white hover:from-pink-700 hover:to-purple-700 active:from-pink-800 active:to-purple-800 shadow-lg hover:shadow-xl;
+}
+
+/* Inputs */
+.input {
+  @apply w-full rounded-xl border-2 border-pink-200 bg-white px-5 py-3.5 text-base text-slate-900 placeholder:text-pink-300 shadow-sm focus:border-pink-500 focus:outline-none focus:ring-4 focus:ring-pink-100 transition-all duration-300 hover:border-pink-300;
+}
+
+:is(.dark) .input {
+  @apply border-purple-700 bg-slate-950 text-slate-50 placeholder:text-purple-400 focus:border-pink-400 focus:ring-pink-500/20 hover:border-purple-600 !important;
+}
+
+/* Cards */
+.card {
+  @apply rounded-2xl border-2 border-pink-200 bg-white shadow-lg transition-all duration-300;
+}
+
+.card:hover {
+  @apply shadow-2xl border-pink-300 transform scale-[1.01] shadow-pink-200/50;
+}
+
+:is(.dark) .card {
+  @apply border-slate-800 shadow-2xl shadow-black/50;
+  background-color: #0f172a !important;
+  /* slate-900 */
+}
+
+:is(.dark) .card:hover {
+  @apply border-pink-900 shadow-pink-900/10;
+}
+
+/* Labels */
+.label {
+  @apply mb-2 block text-xs font-semibold uppercase tracking-wide text-purple-700 dark:text-pink-300;
+}
+
+/* Headings with vibrant gradient */
+.gradient-text {
+  @apply bg-gradient-to-r from-pink-600 via-purple-600 to-orange-500 bg-clip-text text-transparent dark:from-pink-400 dark:via-purple-400 dark:to-orange-300;
+}
+
+/* Soft badge utility */
+.pill {
+  @apply inline-flex items-center gap-1 rounded-full px-3 py-1 text-xs font-semibold transition-all duration-200 hover:scale-105;
+}
+
+/* Attractive icon buttons */
+.icon-btn {
+  @apply rounded-full p-2 transition-all duration-300 hover:bg-pink-100 dark:hover:bg-purple-800 hover:scale-110 active:scale-95;
+}
+
+/* Stat cards with gradient backgrounds */
+.stat-card {
+  @apply card p-6 relative overflow-hidden;
+}
+
+.stat-card::before {
+  content: '';
+  @apply absolute inset-0 bg-gradient-to-br from-pink-100/60 via-purple-100/40 to-transparent pointer-events-none;
+}
+
+body.dark .stat-card::before,
+:is(.dark) .stat-card::before {
+  display: none !important;
+  background: none !important;
+}
+
+/* Success stat card */
+.stat-card-success::before {
+  @apply bg-gradient-to-br from-emerald-100/60 via-teal-100/40 to-transparent;
+}
+
+body.dark .stat-card-success::before,
+:is(.dark) .stat-card-success::before {
+  display: none !important;
+  background: none !important;
+}
+
+/* Info/Purple stat card */
+.stat-card-info::before {
+  @apply bg-gradient-to-br from-purple-100/60 via-indigo-100/40 to-transparent;
+}
+
+body.dark .stat-card-info::before,
+:is(.dark) .stat-card-info::before {
+  display: none !important;
+  background: none !important;
+}
+
+/* Warning stat card */
+.stat-card-warning::before {
+  @apply bg-gradient-to-br from-amber-100/60 via-orange-100/40 to-transparent;
+}
+
+body.dark .stat-card-warning::before,
+:is(.dark) .stat-card-warning::before {
+  display: none !important;
+  background: none !important;
+}
+
+/* Danger stat card */
+.stat-card-danger::before {
+  @apply bg-gradient-to-br from-rose-50/50 to-transparent;
+}
+
+body.dark .stat-card-danger::before,
+:is(.dark) .stat-card-danger::before {
+  display: none !important;
+  background: none !important;
+}
+
+/* Smooth loading animation */
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+.loading-shimmer {
+  animation: shimmer 2s infinite;
+  background: linear-gradient(to right, transparent 0%, rgba(255, 255, 255, 0.2) 50%, transparent 100%);
+  background-size: 1000px 100%;
+}
+
+/* Modal fade-in animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.95);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.modal-backdrop {
+  animation: fadeIn 0.2s ease-out;
+}
+
+.modal-content {
+  animation: slideUp 0.3s ease-out;
+}
+
+/* Scrollbar */
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-pink-50 dark:bg-slate-900 rounded-full;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-gradient-to-b from-pink-400 to-purple-500 dark:from-pink-600 dark:to-purple-700 rounded-full;
+  min-height: 50px;
+  /* Ensure thumb has a decent length */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply from-pink-500 to-purple-600 dark:from-pink-500 dark:to-purple-600;
+}
+input:-webkit-autofill, input:-webkit-autofill:hover, input:-webkit-autofill:focus, input:-webkit-autofill:active { -webkit-box-shadow: 0 0 0 30px white inset !important; }
+.dark input:-webkit-autofill { -webkit-box-shadow: 0 0 0 30px #0f172a inset !important; -webkit-text-fill-color: white !important; }
+
+/* Hide spin buttons for number inputs globally */
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+@keyframes profileFlip {
+  0% {
+    transform: rotateY(0deg);
+  }
+  100% {
+    transform: rotateY(360deg);
+  }
+}
+
+.animate-profile-flip {
+  animation: profileFlip 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
